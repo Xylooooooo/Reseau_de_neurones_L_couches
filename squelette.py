@@ -92,3 +92,19 @@ def forward_propagation(X, parametres) :
     caches.append(cache)
 
     return Y_pred, caches
+
+def calculer_cout(Y_pred, Y) :
+    """
+    Argument :
+    Y_pred -- prédictions du modèle (activations de la couche de sortie)
+    Y -- vraies étiquettes
+
+    Returns :
+    cout -- valeur de la fonction de coût
+    """
+        
+    m = Y.shape[1]
+
+    cout = -(1/m) * np.sum(Y * np.log(Y_pred) + (1- Y) * np.log(1-Y_pred))
+    cout = np.squeeze(cout)
+    return cout
